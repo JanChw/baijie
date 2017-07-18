@@ -17,7 +17,8 @@ router.post('/account/registe', UserControllers.registe)
 // 用户登陆登出
 router.post('/account/login', SessionControllers.login)
 // router.get('/account/logout', SessionController.logout)
-
+// 用户的所有文章
+router.get('/me/articles', isLogined, UserControllers.getMyArticles)
 // 模拟生成手机验证码
 router.get('/verifycode', UserControllers.verify)
 

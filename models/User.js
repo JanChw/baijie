@@ -5,4 +5,5 @@ const UserSchema = {
   name: {type: Sequelize.STRING, allowNull: false},
   mobile: {type: Sequelize.STRING, allowNull: false}
 }
+
 module.exports = sequelize.define('User', UserSchema, {timestamps: false})

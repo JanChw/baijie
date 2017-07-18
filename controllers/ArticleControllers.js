@@ -3,7 +3,8 @@ module.exports = {
   async createOne (req, res, next) {
     try {
       console.log(req.currentUser)
-      let article = await Article.create(req.body)
+      let _article = Object.assign({}, req.body, {user_id: req.currentUser.id})
+      let article = await Article.create(_article, {fields: ['title', 'body', 'user_id']})
       return res.json({data: article, success: true})
     } catch (err) {
       next(err)

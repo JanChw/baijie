@@ -16,6 +16,14 @@ module.exports = {
     }
   },
 
+  async getMyArticles (req, res, next) {
+    let id = req.currentUser.id
+    let currentUser = await User.findById(id)
+    console.log(currentUser)
+    let myArticles = await currentUser.getArticles({attributes: ['title', 'body', ['user_id', 'owner']]})
+    return res.json({data: myArticles, success: true})
+  },
+
   verify (req, res, next) {
     let code = Math.floor(Math.random() * 1000000)
     res.cookie('verifycode', code, {expires: new Date(Date.now() + 1000 * 60)})
