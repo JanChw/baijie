@@ -3,6 +3,7 @@ const router = require('express').Router()
 const UserControllers = require('../../controllers/UserControllers')
 const SessionControllers = require('../../controllers/SessionControllers')
 const ArticleControllers = require('../../controllers/ArticleControllers')
+const UtilControllers = require('../../controllers/UtilControllers')
 
 const isLogined = require('../../middlewares/isLogined')
 const isOwner = require('../../middlewares/isOwner')
@@ -32,4 +33,7 @@ router.route('/article/:id')
       .all(isLogined, isOwner)
       .patch(ArticleControllers.updateOne)
       .delete(ArticleControllers.removeOne)
+
+// 生成图片验证码
+router.get('/util/captcha', UtilControllers.captcha)
 module.exports = router

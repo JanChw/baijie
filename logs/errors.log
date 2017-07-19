@@ -1,4 +1,24 @@
-Error: 要删除的文章不存在
-    at removeOne (/Users/chow/workspace/baijie/controllers/ArticleControllers.js:18:26)
-    at <anonymous>
+TypeError: Cannot read property 'captchaTxt' of undefined
+    at captcha (/Users/chow/workspace/baijie/controllers/UtilControllers.js:7:28)
+    at Layer.handle [as handle_request] (/Users/chow/workspace/baijie/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/chow/workspace/baijie/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/chow/workspace/baijie/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/chow/workspace/baijie/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/chow/workspace/baijie/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:317:13)
+    at /Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/Users/chow/workspace/baijie/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (/Users/chow/workspace/baijie/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:317:13)
+    at /Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/chow/workspace/baijie/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/Users/chow/workspace/baijie/node_modules/body-parser/lib/types/json.js:103:7)
 ==========================

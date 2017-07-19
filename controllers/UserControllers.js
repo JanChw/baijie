@@ -26,7 +26,7 @@ module.exports = {
 
   verify (req, res, next) {
     let code = Math.floor(Math.random() * 1000000)
-    res.cookie('verifycode', code, {expires: new Date(Date.now() + 1000 * 60)})
+    res.cookie('verifycode', code)
     res.json({data: code, success: true})
   }
 }
