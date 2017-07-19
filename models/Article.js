@@ -8,7 +8,7 @@ const ArticleSchema = {
   like: {type: Sequelize.INTEGER, defaultValue: 0},
   collection: {type: Sequelize.INTEGER, defaultValue: 0}
 }
-let Article = sequelize.define('Article', ArticleSchema, {timestamps: false})
+let Article = sequelize.define('Article', ArticleSchema, {timestamps: false, tableName: 'test_articles'})
 User.hasMany(Article, {as: 'Articles', foreignKey: 'user_id'})
 Article.belongsTo(User, {as: 'User', foreignKey: 'user_id'})
 module.exports = Article

@@ -29,7 +29,7 @@ router.route('/articles')
       .post(ArticleControllers.createOne)
 router.route('/article/:id')
       .get(ArticleControllers.getOne)
-      .all(isLogined)
+      .all(isLogined, isOwner)
       .patch(ArticleControllers.updateOne)
       .delete(ArticleControllers.removeOne)
 module.exports = router

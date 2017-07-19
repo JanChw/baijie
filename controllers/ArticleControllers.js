@@ -14,9 +14,8 @@ module.exports = {
   async removeOne (req, res, next) {
     try {
       let id = req.params.id
-      console.log(req.currentUser)
       let result = await Article.destroy({where: {id}})
-      if (!result) return next(new Error('要删除的文章不存在'))
+      if (!result) return res.json({data: '要删除的文章不存在', success: false})
       return res.json({data: result, success: true})
     } catch (err) {
       next(err)
@@ -28,7 +27,7 @@ module.exports = {
       let id = req.params.id
       console.log(req.currentUser)
       let article = await Article.findOne({where: {id}})
-      if (!article) return next(new Error('要更新的文章不存在'))
+      if (!article) return res.json({data: '要更新的文章不存在', success: false})
       let result = await article.update(req.body, {fields: ['title', 'body']})
       return res.json({data: result, success: true})
     } catch (err) {
@@ -40,7 +39,7 @@ module.exports = {
     try {
       let id = req.params.id
       let article = await Article.findById(id)
-      if (!article) return next(new Error('要查找的文章不存在'))
+      if (!article) return res.json({data: '要查找的文章不存在', success: false})
       return res.json({data: article, success: true})
     } catch (err) {
       next(err)
