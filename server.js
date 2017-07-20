@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const app = express()
+const path = require('path')
 const fs = require('fs')
 
 const {sequelize} = require('./db')
@@ -19,7 +20,7 @@ app.use(apiV1)
 
 // 错误页面处理
 app.use((req, res, next) => {
-  res.sendFile('404.html')
+  res.sendFile(path.resolve(__dirname, './404.html'))
 })
 
 // 异常错误日志
