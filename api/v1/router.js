@@ -1,14 +1,19 @@
 const router = require('express').Router()
+const path = require('path')
 
 const UserControllers = require('../../controllers/UserControllers')
 const SessionControllers = require('../../controllers/SessionControllers')
 const ArticleControllers = require('../../controllers/ArticleControllers')
 const UtilControllers = require('../../controllers/UtilControllers')
 
+const uploadHandle = require('../../servers/uploadHandle')
+const ImageHandle = require('../../servers/imageHandle')
+
 const isLogined = require('../../middlewares/isLogined')
 const isOwner = require('../../middlewares/isOwner')
 
 router.get('/', (req, res, next) => {
+  console.log(path.resolve(__dirname, '../../home.html'))
   res.end('welcome to baijie api of version 1')
 })
 
@@ -36,4 +41,11 @@ router.route('/article/:id')
 
 // 生成图片验证码
 router.get('/util/captcha', UtilControllers.captcha)
+
+// 上传文件
+router.route('/upload')
+      .get((req, res, next) => { res.sendFile(path.resolve(__dirname, '../../home.html')) })
+      .post(uploadHandle, (req, res, next) => { res.redirect('/upload') })
+// 图片剪裁
+router.post('/util/crop', ImageHandle.crop)
 module.exports = router

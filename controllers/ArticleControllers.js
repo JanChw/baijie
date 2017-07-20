@@ -24,7 +24,6 @@ module.exports = {
   async updateOne (req, res, next) {
     try {
       let id = req.params.id
-      console.log(req.currentUser)
       let article = await Article.findOne({where: {id}})
       if (!article) return res.json({data: '要更新的文章不存在', success: false})
       let result = await article.update(req.body, {fields: ['title', 'body']})

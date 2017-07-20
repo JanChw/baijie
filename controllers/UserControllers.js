@@ -17,11 +17,14 @@ module.exports = {
   },
 
   async getMyArticles (req, res, next) {
-    let id = req.currentUser.id
-    let currentUser = await User.findById(id)
-    console.log(currentUser)
-    let myArticles = await currentUser.getArticles({attributes: ['title', 'body', ['user_id', 'owner']]})
-    return res.json({data: myArticles, success: true})
+    try {
+      let id = req.currentUser.id
+      let currentUser = await User.findById(id)
+      let myArticles = await currentUser.getArticles({attributes: ['title', 'body', ['user_id', 'owner']]})
+      return res.json({data: myArticles, success: true})
+    } catch (err) {
+      next(err)
+    }
   },
 
   verify (req, res, next) {
